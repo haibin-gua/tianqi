@@ -1,9 +1,10 @@
 <template>
   <div class="Header">
-    <div class="Header-left">
-      <span class="iconfont">&#xe76a;</span>
-    </div>
-    <div class="header-right"></div>
+    <router-link to="/city">
+      <div class="Header-left">
+        <span class="iconfont">&#xe76a;</span>
+      </div>
+    </router-link>
   </div>
 </template>
 
@@ -22,6 +23,7 @@ export default{
     float:left;
     line-height: 1rem;
     margin-left:10px;
+    color:white;
   }
   .iconfont{
     font-size:40px;

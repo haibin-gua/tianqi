@@ -1,7 +1,7 @@
 <template>
   <div class="realtime">
     <swiper>
-       <swiper-slide v-for="(page,index) in pages" :key="page">
+       <swiper-slide v-for="(page,index) in pages" :key="index">
         <div class="realtime-list-wrapper">
         <div class="realtime-list" v-for="item in page" :key="item.id">
           <p>{{item.time}}</p>
