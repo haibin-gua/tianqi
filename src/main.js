@@ -4,14 +4,17 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import VueAwesomeSwiper from 'vue-awesome-swiper'
+import ElementUI from 'element-ui';
 import './assets/styles/reset.css'
 import './assets/styles/border.css'
 import './assets/styles/iconfont.css'
 import 'swiper/css/swiper.css'
+import 'element-ui/lib/theme-chalk/index.css';
 
 
 Vue.config.productionTip = false
 Vue.use(VueAwesomeSwiper)
+Vue.use(ElementUI)
 
 /* eslint-disable no-new */
 new Vue({
