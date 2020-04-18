@@ -1,15 +1,22 @@
 <template>
   <div class="nav">
-    <h2>21℃</h2>
-    <h5>24℃/11℃</h5>
-   <h5>小雨</h5>
-   <h5>空气优</h5>
+    <h2>{{this.tmp}}℃</h2>
+    <h5>{{this.tmpMax}}℃/{{this.tmpMin}}℃</h5>
+   <h5>{{this.condTxt}}</h5>
+   <h5>空气{{this.Qlty}}</h5>
   </div>
 </template>
 
 <script>
 export default{
-  name:'HomeNav'
+  name:'HomeNav',
+  props:{
+    tmp:String,
+    tmpMax:String,
+    tmpMin:String,
+    condTxt:String,
+    Qlty:String
+  }
 }
 </script>
 

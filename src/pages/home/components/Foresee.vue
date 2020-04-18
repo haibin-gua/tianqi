@@ -1,9 +1,9 @@
 <template>
    <div class="foresee">
-    <div class="foresee-wrapper" v-for="(item,index) in foreseeList" :key="item.id">
-      <div class="foresee-left">{{item.time}}</div>
-      <div class="iconfont" v-html="item.icon"></div>
-      <div class="foresee-right">{{item.wendu}}</div>
+    <div class="foresee-wrapper" v-for="item in dateList" :key="item.index">
+      <div class="foresee-left">{{item.date}}</div>
+      <div class="foressee-center">{{item.cond_code_d}}</div>
+      <div class="foresee-right">{{item.tmp_max}}/{{item.tmp_min}}</div>
     </div>
    </div>
 </template>
@@ -11,40 +11,8 @@
 <script>
 export default{
   name:'HomeForesee',
-  data(){
-    return{
-      foreseeList:[{
-        id:'0001',
-        time:'4月16日',
-        icon:'&#xe656',
-        wendu:'28℃/16℃'
-      },{
-        id:'0002',
-        time:'4月16日',
-        icon:'&#xe656',
-        wendu:'28℃/16℃'
-      },{
-        id:'0003',
-        time:'4月16日',
-        icon:'&#xe656',
-        wendu:'28℃/16℃'
-      },{
-        id:'0004',
-        time:'4月16日',
-        icon:'&#xe656',
-        wendu:'28℃/16℃'
-      },{
-        id:'0005',
-        time:'4月16日',
-        icon:'&#xe656',
-        wendu:'28℃/16℃'
-      },{
-        id:'0006',
-        time:'4月16日',
-        icon:'&#xe656',
-        wendu:'28℃/16℃'
-      }]
-    }
+  props:{
+    dateList:Array
   }
 }
 </script>

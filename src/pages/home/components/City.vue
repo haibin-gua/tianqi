@@ -1,12 +1,15 @@
 <template>
   <div class="city">
-  <p>荆门市<span class="iconfont">&#xe656;</span></p>
+  <p>{{this.city}}市<span class="iconfont">&#xe656;</span></p>
   </div>
 </template>
 
 <script>
 export default{
-  name:'HomeCity'
+  name:'HomeCity',
+  props:{
+    city:String
+  }
 }
 </script>
 

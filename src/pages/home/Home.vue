@@ -2,10 +2,10 @@
   <div>
     <img src="../../assets/images/bj.jpg">
     <home-header></home-header>
-    <home-Nav></home-Nav>
-    <home-city></home-city>
+    <home-Nav :tmp="tmp" :tmpMax="tmpMax" :tmpMin="tmpMin" :condTxt="condTxt" :Qlty="Qlty"></home-Nav>
+    <home-city :city="city"></home-city>
     <home-realtime></home-realtime>
-    <home-foresee></home-foresee>
+    <home-foresee :dateList="dateList"></home-foresee>
     <home-air></home-air>
     <home-footer></home-footer>
   </div>
@@ -19,6 +19,7 @@ import HomeRealtime from './components/Realtime.vue'
 import HomeForesee from './components/Foresee.vue'
 import HomeAir from './components/Air.vue'
 import HomeFooter from './components/Footer.vue'
+import axios from 'axios'
 export default{
   name:'Home',
   components:{
@@ -29,6 +30,49 @@ export default{
     HomeForesee,
     HomeAir,
     HomeFooter
+  },
+  data(){
+    return{
+      city:'',
+      tmp:'',
+      tmpMax:'',
+      tmpMin:'',
+      condTxt:'',
+      Qlty:'',
+      dateList:[]
+    }
+  },
+  methods:{
+    getHomeInfo(){
+      axios.get('https://free-api.heweather.net/s6/weather/now?location=beijing&key=fb3c34c934c646cab19756e14b2ef479')
+        .then(this.getHomeInfoSucc)
+    },
+    getHomeInfoSucc(res){
+        this.city = res.data.HeWeather6['0'].basic.location
+        this.tmp = res.data.HeWeather6['0'].now.tmp
+        this.condTxt = res.data.HeWeather6['0'].now.cond_txt
+    },
+    getHomeInfo1(){
+      axios.get('https://free-api.heweather.net/s6/weather/forecast?location=beijing&key=fb3c34c934c646cab19756e14b2ef479')
+        .then(this.getHomeInfo1Succ)
+    },
+    getHomeInfo1Succ(res){
+        this.tmpMax = res.data.HeWeather6['0'].daily_forecast['0'].tmp_max
+        this.tmpMin = res.data.HeWeather6['0'].daily_forecast['0'].tmp_min
+        this.dateList = res.data.HeWeather6['0'].daily_forecast
+    },
+    getHomeInfo2(){
+      axios.get('https://free-api.heweather.net/s6/air/now?location=beijing&key=fb3c34c934c646cab19756e14b2ef479')
+        .then(this.getHomeInfo2Succ)
+    },
+    getHomeInfo2Succ(res){
+      this.Qlty = res.data.HeWeather6['0'].air_now_city.qlty
+    }
+  },
+  mounted(){
+    this.getHomeInfo()
+    this.getHomeInfo1()
+    this.getHomeInfo2()
   }
 }
 </script>
