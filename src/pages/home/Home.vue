@@ -6,7 +6,7 @@
     <home-city :city="city"></home-city>
     <home-realtime></home-realtime>
     <home-foresee :dateList="dateList"></home-foresee>
-    <home-air></home-air>
+    <home-air :Qlty1="Qlty1" :Pm10="Pm10" :Pm25="Pm25" :No2="No2" :So2="So2" :Co="Co" :O3="O3"></home-air>
     <home-footer></home-footer>
   </div>
 </template>
@@ -39,7 +39,14 @@ export default{
       tmpMin:'',
       condTxt:'',
       Qlty:'',
-      dateList:[]
+      dateList:[],
+      Qlty1:'',
+      Pm10:'',
+      Pm25:'',
+      No2:'',
+      So2:'',
+      Co:'',
+      O3:''
     }
   },
   methods:{
@@ -67,12 +74,26 @@ export default{
     },
     getHomeInfo2Succ(res){
       this.Qlty = res.data.HeWeather6['0'].air_now_city.qlty
+    },
+    getHomeInfo3(){
+      axios.get('https://free-api.heweather.net/s6/air/now?location=beijing&key=fb3c34c934c646cab19756e14b2ef479')
+        .then(this.getHomeInfo3Succ)
+    },
+    getHomeInfo3Succ(res){
+      this.Qlty1 = res.data.HeWeather6['0'].air_now_city.qlty
+      this.Pm10 = res.data.HeWeather6['0'].air_now_city.pm10
+      this.Pm25 = res.data.HeWeather6['0'].air_now_city.pm25
+      this.No2 = res.data.HeWeather6['0'].air_now_city.no2
+      this.So2 = res.data.HeWeather6['0'].air_now_city.so2
+      this.Co = res.data.HeWeather6['0'].air_now_city.co
+      this.O3 = res.data.HeWeather6['0'].air_now_city.o3
     }
   },
   mounted(){
     this.getHomeInfo()
     this.getHomeInfo1()
     this.getHomeInfo2()
+    this.getHomeInfo3()
   }
 }
 </script>

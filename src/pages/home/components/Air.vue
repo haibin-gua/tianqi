@@ -2,20 +2,20 @@
   <div class="air">
     <div class="air-quality-wrapper">
       <div class="air-quality">空气质量</div>
-      <div class="air-quality-bottom">优</div>
+      <div class="air-quality-bottom">{{this.Qlty1}}</div>
     </div>
     <div class="air-quality-right" style="border-left: 2px solid gray;">
       <ul>
-        <li>PM10:<span> 28</span></li>
-        <li>PM2.5:<span> 28</span></li>
-        <li>NO2:<span> 28</span></li>
+        <li>PM10:<span> {{this.Pm10}}</span></li>
+        <li>PM2.5:<span> {{this.Pm25}}</span></li>
+        <li>NO2:<span> {{this.No2}}</span></li>
       </ul>
     </div>
     <div class="air-quality-right">
       <ul>
-        <li>SO2:<span> 28</span></li>
-        <li>O3:<span> 28</span></li>
-        <li>CO:<span> 28</span></li>
+        <li>SO2:<span> {{this.So2}}</span></li>
+        <li>O3:<span> {{this.O3}}</span></li>
+        <li>CO:<span> {{this.Co}}</span></li>
       </ul>
     </div>
   </div>
@@ -23,7 +23,16 @@
 
 <script>
 export default{
-  name:'HomeAir'
+  name:'HomeAir',
+  props:{
+    Qlty1:String,
+    Pm10:String,
+    Pm25:String,
+    No2:String,
+    So2:String,
+    Co:String,
+    O3:String
+  }
 }
 </script>
 

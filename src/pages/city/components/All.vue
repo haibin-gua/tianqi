@@ -1,8 +1,8 @@
 <template>
   <div class="all">
-   <div class="all-wrapper" v-for="item in allcityList" :key="item.id">
-    <div class="letter">{{item.letter}}</div>
-    <div class="city">{{item.city}}</div>
+   <div class="all-wrapper" v-for="(item,key) in citiesList" :key="key">
+    <div class="letter">{{key}}</div>
+    <div class="city" v-for="innerItem in item" :key="innerItem.id">{{innerItem.name}}</div>
    </div>
   </div>
 </template>
@@ -10,22 +10,8 @@
 <script>
 export default{
   name:'CityAll',
-  data(){
-    return{
-      allcityList:[{
-        id:"0001",
-        letter:'A',
-        city:'澳门'
-      },{
-        id:"0002",
-        letter:'A',
-        city:'澳门'
-      },{
-        id:"0003",
-        letter:'A',
-        city:'澳门'
-      }]
-    }
+  props:{
+    citiesList:Object
   }
 }
 </script>
