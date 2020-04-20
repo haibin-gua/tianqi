@@ -1,96 +1,23 @@
 <template>
   <div class="realtime">
-    <swiper>
-       <swiper-slide v-for="(page,index) in pages" :key="index">
         <div class="realtime-list-wrapper">
-        <div class="realtime-list" v-for="item in page" :key="item.id">
-          <p>{{item.time}}</p>
-          <p>{{item.sl}}</p>
-          <p><span class="iconfont" v-html="item.gl"></span></p>
-          <p>{{item.wendu}}</p>
+        <div class="realtime-list"  v-for="item in realtimeList" :key="item.time">
+          <p>{{$moment(item.time).format('h:mm')}}</p>  <!--moment插件进行时间格式化-->
+          <p>{{item.pop}}%</p>
+          <p>{{item.cond_txt}}</p>
+          <p>{{item.tmp}}℃</p>
         </div>
         </div>
-       </swiper-slide>
-    </swiper>
   </div>
 </template>
 
 <script>
 export default{
   name:'Realtime',
-  data(){
-    return{
-      RealtimeList:[{
-        id:'0001',
-        time:'8:00',
-        sl:'100%',
-        gl:'&#xe656',
-        wendu:'19℃'
-      },{
-        id:'0002',
-        time:'8:00',
-        sl:'100%',
-        gl:'&#xe656',
-        wendu:'19℃'
-      },{
-        id:'0003',
-        time:'8:00',
-        sl:'100%',
-        gl:'&#xe656',
-        wendu:'19℃'
-      },{
-        id:'0004',
-        time:'8:00',
-        sl:'100%',
-        gl:'&#xe656',
-        wendu:'19℃'
-      },{
-        id:'0005',
-        time:'8:00',
-        sl:'100%',
-        gl:'&#xe656',
-        wendu:'19℃'
-      },{
-        id:'0006',
-        time:'8:00',
-        sl:'100%',
-        gl:'&#xe656',
-        wendu:'19℃'
-      },{
-        id:'0007',
-        time:'8:00',
-        sl:'100%',
-        gl:'&#xe656',
-        wendu:'19℃'
-      },{
-        id:'0008',
-        time:'8:00',
-        sl:'100%',
-        gl:'&#xe656',
-        wendu:'19℃'
-      },{
-        id:'0009',
-        time:'8:00',
-        sl:'100%',
-        gl:'&#xe656',
-        wendu:'19℃'
-      }]
-    }
-  },
-  computed:{
-    pages(){
-      const pages = []
-      this.RealtimeList.forEach((item,index)=>{
-        const page = Math.floor(index/8)
-        if(!pages[page]){
-          pages[page] = []
-        }
-        pages[page].push(item)
-      })
-      return pages
+  props:{
+    realtimeList:Array
     }
   }
-}
 </script>
 
 <style scoped>

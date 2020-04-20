@@ -2,8 +2,8 @@
   <div>
     <city-header></city-header>
     <city-hot :hotList="hotList"></city-hot>
-    <city-sort></city-sort>
-    <city-all :citiesList="citiesList"></city-all>
+    <city-sort @change="letterchange"></city-sort>
+    <city-all :citiesList="citiesList" :letter="letter"></city-all>
   </div>
 </template>
 
@@ -18,7 +18,8 @@ export default{
   data(){
     return{
       hotList:[],
-      citiesList:{}
+      citiesList:{},
+      letter:''
     }
   },
   components:{
@@ -29,7 +30,7 @@ export default{
   },
   methods:{
     getCityInfo(){
-      axios.get('https://search.heweather.net/top?group=cn&number=12&key=fb3c34c934c646cab19756e14b2ef479')
+      axios.get('https://search.heweather.net/top?group=cn&number=4&key=fb3c34c934c646cab19756e14b2ef479')
         .then(this.getCityInfoSucc)
     },
     getCityInfoSucc(res){
@@ -41,6 +42,9 @@ export default{
     },
     getCityInfo1Succ(res){
       this.citiesList = res.data.data.cities
+    },
+    letterchange (letter) {       //接受外部传递过来的内容
+      this.letter = letter          //需要传递出去的值为接受到的值
     }
   },
   mounted(){

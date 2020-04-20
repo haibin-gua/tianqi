@@ -10,11 +10,15 @@ import './assets/styles/border.css'
 import './assets/styles/iconfont.css'
 import 'swiper/css/swiper.css'
 import 'element-ui/lib/theme-chalk/index.css';
+import moment from 'moment'
+
+
 
 
 Vue.config.productionTip = false
 Vue.use(VueAwesomeSwiper)
 Vue.use(ElementUI)
+Vue.prototype.$moment = moment
 
 /* eslint-disable no-new */
 new Vue({

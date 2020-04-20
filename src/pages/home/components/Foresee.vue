@@ -20,7 +20,7 @@ export default{
 <style scoped>
   .foresee{
     width:98%;
-    height:4.8rem;
+    height:5.6rem;
     margin:0 auto;
   }
   .foresee-wrapper{

@@ -4,7 +4,7 @@
     <home-header></home-header>
     <home-Nav :tmp="tmp" :tmpMax="tmpMax" :tmpMin="tmpMin" :condTxt="condTxt" :Qlty="Qlty"></home-Nav>
     <home-city :city="city"></home-city>
-    <home-realtime></home-realtime>
+    <home-realtime :realtimeList="realtimeList"></home-realtime>
     <home-foresee :dateList="dateList"></home-foresee>
     <home-air :Qlty1="Qlty1" :Pm10="Pm10" :Pm25="Pm25" :No2="No2" :So2="So2" :Co="Co" :O3="O3"></home-air>
     <home-footer></home-footer>
@@ -46,7 +46,8 @@ export default{
       No2:'',
       So2:'',
       Co:'',
-      O3:''
+      O3:'',
+      realtimeList:[]
     }
   },
   methods:{
@@ -87,6 +88,13 @@ export default{
       this.So2 = res.data.HeWeather6['0'].air_now_city.so2
       this.Co = res.data.HeWeather6['0'].air_now_city.co
       this.O3 = res.data.HeWeather6['0'].air_now_city.o3
+    },
+    getHomeInfo4(){
+      axios.get('https://free-api.heweather.net/s6/weather/hourly?location=beijing&key=fb3c34c934c646cab19756e14b2ef479')
+          .then(this.getHomeInfo4Succ)
+    },
+    getHomeInfo4Succ(res){
+      this.realtimeList = res.data.HeWeather6['0'].hourly
     }
   },
   mounted(){
@@ -94,6 +102,7 @@ export default{
     this.getHomeInfo1()
     this.getHomeInfo2()
     this.getHomeInfo3()
+    this.getHomeInfo4()
   }
 }
 </script>

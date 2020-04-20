@@ -1,6 +1,6 @@
 <template>
   <div class="city">
-  <p>{{this.city}}市<span class="iconfont">&#xe656;</span></p>
+  <p>{{this.city}}<span class="iconfont">&#xe656;</span></p>
   </div>
 </template>
 
