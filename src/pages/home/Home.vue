@@ -3,7 +3,7 @@
     <img src="../../assets/images/bj.jpg">
     <home-header></home-header>
     <home-Nav :tmp="tmp" :tmpMax="tmpMax" :tmpMin="tmpMin" :condTxt="condTxt" :Qlty="Qlty"></home-Nav>
-    <home-city :city="city"></home-city>
+    <home-city></home-city>
     <home-realtime :realtimeList="realtimeList"></home-realtime>
     <home-foresee :dateList="dateList"></home-foresee>
     <home-air :Qlty1="Qlty1" :Pm10="Pm10" :Pm25="Pm25" :No2="No2" :So2="So2" :Co="Co" :O3="O3"></home-air>
@@ -33,7 +33,6 @@ export default{
   },
   data(){
     return{
-      city:'',
       tmp:'',
       tmpMax:'',
       tmpMin:'',
@@ -56,7 +55,6 @@ export default{
         .then(this.getHomeInfoSucc)
     },
     getHomeInfoSucc(res){
-        this.city = res.data.HeWeather6['0'].basic.location
         this.tmp = res.data.HeWeather6['0'].now.tmp
         this.condTxt = res.data.HeWeather6['0'].now.cond_txt
     },

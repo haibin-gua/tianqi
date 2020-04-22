@@ -2,7 +2,7 @@
   <div calss="hot">
     <div class="hotcity">热门城市</div>
       <div class="hotcityList">
-        <div class="hotcityList-wrapper" v-for="item in hotList" :key="item.cid">
+        <div class="hotcityList-wrapper" v-for="item in hotList" :key="item.cid" @click="cityclick(item.location)">
           <div class="button">{{item.location}}</div>
         </div>
       </div>
@@ -14,6 +14,12 @@ export default{
   name:'CityHot',
   props:{
     hotList:Array
+  },
+  methods:{
+    cityclick(city){   //获取到了所点击的城市
+      this.$store.commit('changecity',city)       //会将city传递给vuex的actions里面的changecity方法
+      this.$router.push('/')
+    }
   }
 }
 </script>

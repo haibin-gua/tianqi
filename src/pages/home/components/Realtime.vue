@@ -2,7 +2,7 @@
   <div class="realtime">
         <div class="realtime-list-wrapper">
         <div class="realtime-list"  v-for="item in realtimeList" :key="item.time">
-          <p>{{$moment(item.time).format('h:mm')}}</p>  <!--moment插件进行时间格式化-->
+          <p>{{$moment(item.time).format('H:mm')}}</p>  <!--moment插件进行时间格式化-->
           <p>{{item.pop}}%</p>
           <p>{{item.cond_txt}}</p>
           <p>{{item.tmp}}℃</p>

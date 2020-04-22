@@ -4,7 +4,7 @@
      <div class="area" v-for="(item,key) in citiesList" :key="key" :ref="key">
        <div class="title border-bottom">{{key}}</div>
        <div class="item-list">
-         <div class="item border-bottom" v-for="innerItem of item" :key="innerItem.id">{{innerItem.name}}</div>
+         <div class="item border-bottom" v-for="innerItem in item" :key="innerItem.id" @click="cityclick(innerItem.name)">{{innerItem.name}}</div>
        </div>
      </div>
      </div>
@@ -16,7 +16,7 @@ import BScroll from 'better-scroll'
 export default{
   name:'CityAll',
   mounted () {
-    this.scroll = new BScroll(this.$refs.wrapper)
+    this.scroll = new BScroll(this.$refs.wrapper,{click:true})
   },
   props:{
     citiesList:Object,
@@ -28,6 +28,12 @@ export default{
         const element = this.$refs[this.letter][0] //通过$refs获取dom元素,即每个点击的字母
         this.scroll.scrollToElement(element)
       }
+    }
+  },
+  methods:{
+    cityclick(city){   //获取到了所点击的城市
+      this.$store.commit('changecity',city)       //会将city传递给vuex的actions里面的changecity方法
+      this.$router.push('/')
     }
   }
 }

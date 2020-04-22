@@ -8,7 +8,7 @@
     </div>
     <div class="search" ref="search" v-show="keyword">
       <ul>
-        <li class="search-item border-bottom" v-for="item in list" :key="item.id">{{item.name}}</li>
+        <li class="search-item border-bottom" v-for="item in list" :key="item.id" @click="cityclick(item.name)">{{item.name}}</li>
       </ul>
     </div>
   </div>
@@ -51,8 +51,16 @@ export default{
     }
   },
   mounted(){
-    this.scroll = new BScroll(this.$refs.search)
-  }
+    this.scroll = new BScroll(this.$refs.search,{
+      click:true
+    })
+  },
+  methods:{
+    cityclick(city){   //获取到了所点击的城市
+      this.$store.commit('changecity',city)       //会将city传递给vuex的actions里面的changecity方法
+      this.$router.push('/')
+    }
+  },
 }
 </script>
 

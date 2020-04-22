@@ -1,15 +1,12 @@
 <template>
   <div class="city">
-  <p>{{this.city}}<span class="iconfont">&#xe656;</span></p>
+  <p>{{this.$store.state.city}}<span class="iconfont">&#xe656;</span></p>
   </div>
 </template>
 
 <script>
 export default{
-  name:'HomeCity',
-  props:{
-    city:String
-  }
+  name:'HomeCity'
 }
 </script>
 

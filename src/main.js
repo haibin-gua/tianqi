@@ -11,7 +11,7 @@ import './assets/styles/iconfont.css'
 import 'swiper/css/swiper.css'
 import 'element-ui/lib/theme-chalk/index.css';
 import moment from 'moment'
-
+import store from './store/index.js'
 
 
 
@@ -24,6 +24,7 @@ Vue.prototype.$moment = moment
 new Vue({
   el: '#app',
   router,
+  store,
   components: { App },
   template: '<App/>'
 })
