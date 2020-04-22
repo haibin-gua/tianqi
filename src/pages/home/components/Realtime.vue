@@ -4,7 +4,7 @@
         <div class="realtime-list"  v-for="item in realtimeList" :key="item.time">
           <p>{{$moment(item.time).format('H:mm')}}</p>  <!--moment插件进行时间格式化-->
           <p>{{item.pop}}%</p>
-          <p>{{item.cond_txt}}</p>
+          <p><img :src="imgUrl"></p>
           <p>{{item.tmp}}℃</p>
         </div>
         </div>
@@ -16,6 +16,11 @@ export default{
   name:'Realtime',
   props:{
     realtimeList:Array
+    },
+    computed:{
+      imgUrl:function(){
+        return '../../static/cond-icon-heweather/'+this.realtimeList[0].cond_code+'.png'
+      }
     }
   }
 </script>
@@ -38,5 +43,9 @@ export default{
     text-align: center;
     padding:.1rem;
     color:white;
+  }
+  img{
+    width:.7rem;
+    height:.7rem;
   }
 </style>

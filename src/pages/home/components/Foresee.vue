@@ -1,8 +1,8 @@
 <template>
    <div class="foresee">
-    <div class="foresee-wrapper" v-for="item in dateList" :key="item.index">
+    <div class="foresee-wrapper border-bottom" v-for="item in dateList" :key="item.index">
       <div class="foresee-left">{{item.date}}</div>
-      <div class="foressee-center">{{item.cond_txt_d}}/{{item.cond_txt_n}}</div>
+      <div class="foressee-center"><img :src="imgUrl">/<img :src="imgUrl1"></div>
       <div class="foresee-right">{{item.tmp_max}}/{{item.tmp_min}}</div>
     </div>
    </div>
@@ -13,6 +13,14 @@ export default{
   name:'HomeForesee',
   props:{
     dateList:Array
+  },
+  computed:{
+    imgUrl:function(){
+      return '../../static/cond-icon-heweather/'+this.dateList[0].cond_code_d+'.png'
+    },
+    imgUrl1:function(){
+      return '../../static/cond-icon-heweather/'+this.dateList[0].cond_code_n+'.png'
+    }
   }
 }
 </script>
@@ -22,10 +30,11 @@ export default{
     width:98%;
     height:5.6rem;
     margin:0 auto;
+    margin-bottom: .4rem;
+    margin-top:.4rem;
   }
   .foresee-wrapper{
     font-size: 18px;
-    border-top:1px solid #CACACA;
     line-height: .8rem;
     display: flex;
     justify-content:space-between;
@@ -38,5 +47,9 @@ export default{
   }
   .foresee-right{
     width:1rem;
+  }
+  img{
+    width:.7rem;
+    height:.7rem;
   }
 </style>
