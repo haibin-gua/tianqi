@@ -19,7 +19,7 @@ export default{
     },
     computed:{
       imgUrl:function(){
-        return '../../static/cond-icon-heweather/'+this.realtimeList[0].cond_code+'.png'
+        return 'static/cond-icon-heweather/'+this.realtimeList[0].cond_code+'.png'
       }
     }
   }

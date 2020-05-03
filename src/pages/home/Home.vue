@@ -57,7 +57,7 @@ export default{
     },
     getHomeInfoSucc(res){
         this.tmp = res.data.HeWeather6['0'].now.tmp
-        this.condCode = '../../static/cond-icon-heweather/'+res.data.HeWeather6['0'].now.cond_code+'.png'
+        this.condCode = 'static/cond-icon-heweather/'+res.data.HeWeather6['0'].now.cond_code+'.png'
     },
     getHomeInfo1(){
       axios.get('https://free-api.heweather.net/s6/weather/forecast?key=fb3c34c934c646cab19756e14b2ef479&location='+this.$store.state.city)

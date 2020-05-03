@@ -37,7 +37,7 @@ export default{
         this.hotList = res.data.HeWeather6['0'].basic
     },
     getCityInfo1(){
-      axios.get('/static/mock/city.json')
+      axios.get('static/mock/city.json')
         .then(this.getCityInfo1Succ)
     },
     getCityInfo1Succ(res){

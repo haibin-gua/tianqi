@@ -16,10 +16,10 @@ export default{
   },
   computed:{
     imgUrl:function(){
-      return '../../static/cond-icon-heweather/'+this.dateList[0].cond_code_d+'.png'
+      return 'static/cond-icon-heweather/'+this.dateList[0].cond_code_d+'.png'
     },
     imgUrl1:function(){
-      return '../../static/cond-icon-heweather/'+this.dateList[0].cond_code_n+'.png'
+      return 'static/cond-icon-heweather/'+this.dateList[0].cond_code_n+'.png'
     }
   }
 }

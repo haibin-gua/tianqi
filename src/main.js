@@ -7,12 +7,11 @@ import VueAwesomeSwiper from 'vue-awesome-swiper'
 import ElementUI from 'element-ui';
 import './assets/styles/reset.css'
 import './assets/styles/border.css'
-import './assets/styles/iconfont.css'
 import 'swiper/css/swiper.css'
 import 'element-ui/lib/theme-chalk/index.css';
 import moment from 'moment'
 import store from './store/index.js'
-
+import './assets/icon/iconfont.css'
 
 
 Vue.config.productionTip = false
